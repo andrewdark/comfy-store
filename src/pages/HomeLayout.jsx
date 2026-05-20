@@ -1,8 +1,10 @@
+import { Outlet } from 'react-router-dom';
 
 const HomeLayout = () => {
     return (
         <div>
-            <h1>HomeLayout</h1>
+            <nav><span className='text-4xl text-primary'>Comfy store</span></nav>
+            <Outlet />
         </div>
     );
 };
