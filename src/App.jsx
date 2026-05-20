@@ -47,7 +47,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
 ], {
-  basename: '/comfy-store/' // ✨ ОСЬ ЦЕЙ РЯДОК МАЄ БУТИ ОБОВ'ЯЗКОВО!
+  basename: '/comfy-store/' // ОСЬ ЦЕЙ РЯДОК МАЄ БУТИ ОБОВ'ЯЗКОВО!
 });
 
 function App() {
