@@ -3,7 +3,7 @@ import { About, Cart, Checkout, Error, HomeLayout, Landing, Login, Orders, Produ
 
 const router = createBrowserRouter([
   {
-    path: '/comfy-store/',
+    path: '/',
     element: <HomeLayout />,
     errorElement: <Error />,
     children: [
@@ -27,22 +27,28 @@ const router = createBrowserRouter([
         path: 'orders', element: <Orders />,
       },
       {
-        path: '*', // Пастка для всіх неіснуючих сторінок (404)
-        element: <Error />
+        path: '*',
+        element: <Error />,
+        // Хак: змушуємо роутер думати, що це чесна 404 помилка маршрутизації
+        loader: () => {
+          throw new Response("Not Found", { status: 404 });
+        }
       }
     ]
   },
   {
-    path: '/comfy-store/login',
+    path: '/login',
     element: <Login />,
     errorElement: <Error />,
   },
   {
-    path: '/comfy-store/register',
+    path: '/register',
     element: <Register />,
     errorElement: <Error />,
   },
-]);
+], {
+  basename: '/comfy-store/' // ✨ ОСЬ ЦЕЙ РЯДОК МАЄ БУТИ ОБОВ'ЯЗКОВО!
+});
 
 function App() {
 
