@@ -4,7 +4,7 @@ import { Form, Link } from 'react-router-dom';
 const Login = () => {
     return (
         <section className='h-screen grid place-items-center'>
-            <Form method='post' className='card p-8 bg-base-100 shadow-lg lg:w-72'>
+            <Form method='post' className='card p-8 bg-base-100 shadow-lg gap-2 lg:w-72'>
                 <h4 className='text-center text-3xl font-bold'>Login</h4>
                 <FormInput label='Email:' name='identifier' type='email' />
                 <FormInput label='Password:' name='identifier' type='password' />
