@@ -16,47 +16,25 @@ cd comfy-store
 
 ## Install Tailwind and Daisy UI Libraries
 - add tailwind
-
+- add DaisyUI [DaisyUI](https://daisyui.com/)
 ```sh
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-- add following content
+npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest
 
-tailwind.config.js
-
-```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
+npm i  -D @tailwindcss/typography
 ```
+
 - Add the Tailwind directives to your CSS
 
 index.css
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-[DaisyUI](https://daisyui.com/)
+@import "tailwindcss";
 
-```sh
-npm i  -D daisyui@latest @tailwindcss/typography
-```
-
-tailwind.config.js
-```js
-{
- plugins: [typography, daisyui],
+@plugin "daisyui" {
+    themes: light, dark, cupcake, cyberpunk;
+    /* themes: all; */
 }
 ```
-
 ## Install All Libraries
 
 ```sh
