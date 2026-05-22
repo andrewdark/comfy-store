@@ -13,6 +13,7 @@ const queryClient = new QueryClient({
 
 // loaders
 import { loader as landingLoader } from './pages/Landing';
+import { loader as singleProdactLoader } from './pages/SingleProduct';
 // actions
 
 const router = createBrowserRouter([
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'products/:id', element: <SingleProduct />,
+        loader: singleProdactLoader,
       },
       {
         path: 'cart', element: <Cart />,

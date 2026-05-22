@@ -25,7 +25,7 @@ const Error = () => {
     }
     return (
         <main className='grid min-h-[100vh] place-items-center px-8' >
-            <h4 className='text-center text-4xl font-bold'>Error</h4>
+            <h4 className='text-center text-4xl font-bold'>Error {error?.status}</h4>
         </main>
     );
 };
