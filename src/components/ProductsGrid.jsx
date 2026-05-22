@@ -1,4 +1,5 @@
 import { useLoaderData, Link } from 'react-router-dom';
+import { formatPrice } from '../utils'
 
 const ProductsGrid = () => {
     const { products } = useLoaderData();
@@ -8,6 +9,8 @@ const ProductsGrid = () => {
         <div className='pt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
             {products.map(product => {
                 const { title, price, image } = product.attributes;
+                const dlrPrice = formatPrice(price);
+
                 return <Link
                     key={product.id}
                     to={`/products/${product.id}`}
@@ -22,7 +25,7 @@ const ProductsGrid = () => {
                     </figure>
                     <div className='card-body items-center text-center'>
                         <h2 className='card-title capitalize tracking-wider'>{title}</h2>
-                        <span className='text-secondary'>{price}</span>
+                        <span className='text-secondary'>{dlrPrice}</span>
                     </div>
                 </Link>
             })}
