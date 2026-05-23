@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { customFetch } from '../http';
 import { formatPrice } from '../utils'
 
@@ -25,10 +25,33 @@ const SingleProduct = () => {
     const dlrPrice = formatPrice(price);
 
     return (
-        <div>
-            <h1>{title}</h1>
-            <p>{description}</p>
-        </div>
+        <section>
+            <div className='text-md breadcrumbs'>
+                <ul>
+                    <li>
+                        <Link to='/'>Home</Link>
+                    </li>
+                    <li>
+                        <Link to='/products'>Products</Link>
+                    </li>
+                </ul>
+            </div>
+            {/* PRODUCT */}
+            <div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
+                <img
+                    src={image}
+                    alt={title}
+                    className='w-96 h-96 object-cover rounded-lg lg:w-full'
+                />
+                {/* PRODUCT */}
+                <div>
+                    <h1 className='capitalize text-3xl font-bold'>{title}</h1>
+                    <p className='mt-8'>{description}</p>
+                </div>
+
+            </div>
+        </section>
+
     );
 };
 
