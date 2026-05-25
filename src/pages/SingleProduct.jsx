@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from 'react-router-dom';
+import { useState } from 'react';
 import { customFetch } from '../http';
 import { formatPrice } from '../utils'
 
@@ -22,6 +23,8 @@ export const loader = async ({ params }) => {
 const SingleProduct = () => {
     const { product } = useLoaderData();
     const { image, title, price, description, colors, company } = product.attributes;
+    const [productColor, setProductColor] = useState(colors[0]);
+    const [amount, setAmount] = useState(1);
     const dlrPrice = formatPrice(price);
 
     return (
@@ -57,7 +60,18 @@ const SingleProduct = () => {
                             colors
                         </h4>
                         <div className='mt-2'>
-
+                            {colors.map((color) => {
+                                return (
+                                    <button
+                                        key={color}
+                                        type='button'
+                                        className={`badge w-6 h-6 mr-2 ${color === productColor && 'border-2 border-secondary'
+                                            }`}
+                                        style={{ backgroundColor: color }}
+                                        onClick={() => setProductColor(color)}
+                                    ></button>
+                                );
+                            })}
                         </div>
                     </div>
                     {/* AMOUNT */}
