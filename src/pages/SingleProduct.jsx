@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
 import { customFetch } from '../http';
-import { formatPrice } from '../utils'
+import { formatPrice, generateAmountOptions } from '../utils'
 
 export const loader = async ({ params }) => {
     const { id } = params;
@@ -26,6 +26,10 @@ const SingleProduct = () => {
     const [productColor, setProductColor] = useState(colors[0]);
     const [amount, setAmount] = useState(1);
     const dlrPrice = formatPrice(price);
+
+    const handleAmount = (e) => {
+        setAmount(parseInt(e.target.value));
+    };
 
     return (
         <section>
@@ -65,7 +69,7 @@ const SingleProduct = () => {
                                     <button
                                         key={color}
                                         type='button'
-                                        className={`badge w-6 h-6 mr-2 ${color === productColor && 'border-2 border-secondary'
+                                        className={`badge w-6 h-6 mr-2 ${color === productColor && 'border-2 border-secondary lg:w-7 lg:h-7'
                                             }`}
                                         style={{ backgroundColor: color }}
                                         onClick={() => setProductColor(color)}
@@ -81,6 +85,14 @@ const SingleProduct = () => {
                                 amount
                             </h4>
                         </label>
+                        <select
+                            className='select select-secondary select-bordered select-md'
+                            id='amount'
+                            value={amount}
+                            onChange={handleAmount}
+                        >
+                            {generateAmountOptions(9)}
+                        </select>
                     </div>
                     {/* CART BTN */}
                     <div className='mt-10'>
