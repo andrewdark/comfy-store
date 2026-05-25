@@ -43,7 +43,7 @@ const SingleProduct = () => {
                     alt={title}
                     className='w-96 h-96 object-cover rounded-lg lg:w-full'
                 />
-                {/* PRODUCT */}
+                {/* the-PRODUCT */}
                 <div>
                     <h1 className='capitalize text-3xl font-bold'>{title}</h1>
                     <h4 className='text-xl text-neutral-content font-bold mt-2'>
@@ -51,6 +51,29 @@ const SingleProduct = () => {
                     </h4>
                     <p className='mt-3 text-xl'>{dlrPrice}</p>
                     <p className='mt-8 leading-8'>{description}</p>
+                    {/* COLORS */}
+                    <div className='mt-6'>
+                        <h4 className='text-md font-medium tracking-wider capitalize'>
+                            colors
+                        </h4>
+                        <div className='mt-2'>
+
+                        </div>
+                    </div>
+                    {/* AMOUNT */}
+                    <div className='form-control w-full max-w-xs'>
+                        <label className='label' htmlFor='amount'>
+                            <h4 className='text-md font-medium tracking-wider capitalize'>
+                                amount
+                            </h4>
+                        </label>
+                    </div>
+                    {/* CART BTN */}
+                    <div className='mt-10'>
+                        <button className='btn btn-secondary btn-md' onClick={() => { console.log('O_0'); }}>
+                            Add to bag
+                        </button>
+                    </div>
                 </div>
 
             </div>
