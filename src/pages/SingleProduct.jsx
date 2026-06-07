@@ -33,7 +33,7 @@ const SingleProduct = () => {
 
     return (
         <section>
-            <div className='text-md breadcrumbs'>
+            <div className='text-sm breadcrumbs'>
                 <ul>
                     <li>
                         <Link to='/'>Home</Link>
@@ -60,7 +60,7 @@ const SingleProduct = () => {
                     <p className='mt-8 leading-8'>{description}</p>
                     {/* COLORS */}
                     <div className='mt-6'>
-                        <h4 className='text-md font-medium tracking-wider capitalize'>
+                        <h4 className='text-sm font-medium tracking-wider capitalize'>
                             colors
                         </h4>
                         <div className='mt-2'>
@@ -81,7 +81,7 @@ const SingleProduct = () => {
                     {/* AMOUNT */}
                     <div className='form-control w-full max-w-xs'>
                         <label className='label' htmlFor='amount'>
-                            <h4 className='text-md font-medium tracking-wider capitalize'>
+                            <h4 className='text-sm font-medium tracking-wider capitalize'>
                                 amount
                             </h4>
                         </label>

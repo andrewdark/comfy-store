@@ -25,7 +25,7 @@ const ProductsList = () => {
                     </figure>
                     <div className='ml-0 sm:ml-16'>
                         <h3 className='capitalize font-medium text-lg'>{title}</h3>
-                        <h4 className='capitalize text-md text-neutral-content'>
+                        <h4 className='capitalize text-sm text-neutral-content'>
                             {company}
                         </h4>
                     </div>
