@@ -1,6 +1,7 @@
 import { Form, useLoaderData, Link } from 'react-router-dom';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
+import FormRange from './FormRange';
 
 const Filters = () => {
     const { meta } = useLoaderData();
@@ -39,7 +40,12 @@ const Filters = () => {
                 defaultValue='all'
             />
             {/* PRICE */}
-            <div className='capitalize'>select price</div>
+
+            <FormRange
+                label='select price'
+                name='price'
+                size='range-sm'
+            />
             {/* SHIPPING */}
             <div className='capitalize'>free shipping</div>
             {/* BUTTONS */}
