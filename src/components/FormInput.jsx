@@ -2,7 +2,7 @@
 const FormInput = ({ label, name, type, placeholder, defaultValue, size }) => {
     return (
         <fieldset className="fieldset mt-4">
-            <legend className="fieldset-legend mb-1">{label}</legend>
+            <legend className="fieldset-legend capitalize">{label}</legend>
             <input
                 type={type ?? 'text'}
                 className={`input border-2 px-2 ${size}`}
