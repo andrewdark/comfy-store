@@ -15,12 +15,12 @@ const ProductsList = () => {
                     to={`/products/${product.id}`}
                     className='p-6 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap  bg-base-100 shadow-xl hover:shadow-2xl duration-300 group'
                 >
-                    <figure className='px-2'>
+                    <figure className='px-0'>
                         <img
                             src={image}
                             alt={title}
                             // className='rounded-xl h-64 md:h-48 w-full object-cover'
-                            className='h-24 w-24 rounded-lg sm:h-32 sm:w-32object-cover group-hover:scale-105 transition duration-300'
+                            className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 md:h-32 md:w-48 object-cover group-hover:scale-105 transition duration-300'
                         />
                     </figure>
                     <div className='ml-0 sm:ml-16'>
