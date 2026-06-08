@@ -1,7 +1,9 @@
 import { Form, useLoaderData, Link } from 'react-router-dom';
 import FormInput from './FormInput';
+import FormSelect from './FormSelect';
 
 const Filters = () => {
+    const { meta } = useLoaderData();
     return (
         <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
             {/* SEARCH */}
@@ -13,28 +15,28 @@ const Filters = () => {
                 defaultValue=''
             />
             {/* CATEGORIES */}
-            <FormInput
-                type='search'
+            <FormSelect
                 label='select category'
                 name='category'
-                size='input-sm'
-                defaultValue=''
+                list={meta.categories}
+                size='select-sm'
+                defaultValue='all'
             />
             {/* COMPANIES */}
-            <FormInput
-                type='search'
+            <FormSelect
                 label='select company'
                 name='company'
-                size='input-sm'
-                defaultValue=''
+                list={meta.companies}
+                size='select-sm'
+                defaultValue='all'
             />
             {/* ORDER */}
-            <FormInput
-                type='input'
+            <FormSelect
                 label='sort by'
                 name='order'
-                size='input-sm'
-                defaultValue=''
+                list={['a-z', 'z-a', 'high', 'low']}
+                size='select-sm'
+                defaultValue='all'
             />
             {/* PRICE */}
             <div className='capitalize'>select price</div>

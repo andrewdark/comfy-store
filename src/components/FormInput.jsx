@@ -9,7 +9,7 @@ const FormInput = ({ label, name, type, placeholder, defaultValue, size }) => {
                 name={name}
                 placeholder={placeholder ?? "Type here"}
                 defaultValue={defaultValue} />
-
+            <p className="label hidden">Optional</p>
         </fieldset>
     );
 };
