@@ -2,7 +2,8 @@ import { Form, useLoaderData, Link } from 'react-router-dom';
 import { FormInput, FormSelect, FormRange, FormCheckbox } from './';
 
 const Filters = () => {
-    const { meta } = useLoaderData();
+    const { meta, params } = useLoaderData();
+    const { search, category, company, order, price, shipping } = params;
     return (
         <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
             {/* SEARCH */}
@@ -11,7 +12,7 @@ const Filters = () => {
                 label='search product'
                 name='search'
                 size='input-sm'
-                defaultValue=''
+                defaultValue={search}
             />
             {/* CATEGORIES */}
             <FormSelect
@@ -19,7 +20,7 @@ const Filters = () => {
                 name='category'
                 list={meta.categories}
                 size='select-sm'
-                defaultValue='all'
+                defaultValue={category}
             />
             {/* COMPANIES */}
             <FormSelect
@@ -27,7 +28,7 @@ const Filters = () => {
                 name='company'
                 list={meta.companies}
                 size='select-sm'
-                defaultValue='all'
+                defaultValue={company}
             />
             {/* ORDER */}
             <FormSelect
@@ -35,21 +36,21 @@ const Filters = () => {
                 name='order'
                 list={['a-z', 'z-a', 'high', 'low']}
                 size='select-sm'
-                defaultValue='all'
+                defaultValue={order}
             />
             {/* PRICE */}
-
             <FormRange
                 label='select price'
                 name='price'
                 size='range-sm'
+                price={price}
             />
             {/* SHIPPING */}
             <FormCheckbox
                 name='shipping'
                 label='free shipping'
                 size='checkbox-sm'
-                defaultValue={false}
+                defaultValue={shipping}
             />
             {/* BUTTONS */}
             <button type='submit' className='btn btn-primary btn-sm'>
