@@ -1,15 +1,20 @@
-import { Outlet } from 'react-router-dom';
-import { Header, NavBar } from '../components';
+import { Outlet, useNavigation } from 'react-router-dom';
+import { Header, NavBar, Loading } from '../components';
 
 const HomeLayout = () => {
+    const myNavy = useNavigation();
+    const isPageLoading = myNavy.state === 'loading';
+
     return (
         <div>
             <Header />
             <NavBar />
-            <section className='cstm-align-element py-20'>
-                <Outlet />
-            </section>
+            {isPageLoading ? <Loading /> :
+                <section className='cstm-align-element py-20'>
+                    <Outlet />
+                </section>
 
+            }
         </div>
     );
 };
