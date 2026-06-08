@@ -23,6 +23,13 @@ const NavBar = () => {
         setTheme(newTheme);
     };
 
+    const handleLinkClick = () => {
+        const elem = document.activeElement;
+        if (elem) {
+            elem.blur();
+        }
+    };
+
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
@@ -44,8 +51,11 @@ const NavBar = () => {
                         <label tabIndex={0} className='btn btn-ghost lg:hidden'>
                             <FaBarsStaggered className='h-6 w-6' />
                         </label>
-                        <ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'>
-                            <NavLinks />
+                        <ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-200 rounded-box w-52'>
+                            {/* Огортаємо NavLinks або передаємо функцію всередину, якщо це можливо */}
+                            <div onClick={handleLinkClick}>
+                                <NavLinks />
+                            </div>
                         </ul>
                     </div>
                 </div>
