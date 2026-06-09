@@ -2,9 +2,12 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
 import { customFetch } from '../http';
 import { formatPrice, generateAmountOptions } from '../utils'
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/cart/cartSlice';
 
 export const loader = async ({ params }) => {
     const { id } = params;
+
 
     // 1. Перевіряємо чи існує id
     // 2. Перевіряємо чи є воно числом (перетворюємо і дивимось, чи не NaN)
@@ -29,6 +32,23 @@ const SingleProduct = () => {
 
     const handleAmount = (e) => {
         setAmount(parseInt(e.target.value));
+    };
+
+    const cartProduct = {
+        cartID: product?.id + productColor,
+        productID: product?.id,
+        image,
+        title,
+        price,
+        company,
+        productColor,
+        amount,
+    };
+
+    const dispatch = useDispatch();
+
+    const addToCart = () => {
+        dispatch(addItem({ product: cartProduct }));
     };
 
     return (
@@ -96,7 +116,7 @@ const SingleProduct = () => {
                     </div>
                     {/* CART BTN */}
                     <div className='mt-10'>
-                        <button className='btn btn-secondary btn-md' onClick={() => { console.log('O_0'); }}>
+                        <button className='btn btn-secondary btn-md' onClick={addToCart}>
                             Add to bag
                         </button>
                     </div>
