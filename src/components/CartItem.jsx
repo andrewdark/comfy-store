@@ -39,7 +39,21 @@ const CartItem = ({ cartItem }) => {
             </div>
             <div className='sm:ml-12'>
                 {/* AMOUNT */}
-                <div>{amount}</div>
+                <div className='fieldset max-w-xs'>
+                    <label htmlFor='amount' className='label p-0'>
+                        <span className='label-text'>Amount</span>
+                    </label>
+                    <select
+                        name='amount'
+                        id='amount'
+                        className='mt-2 select select-base select-bordered select-xs'
+                        value={amount}
+                        onChange={handleAmount}
+                    >
+                        {generateAmountOptions(amount + 5)}
+                    </select>
+
+                </div>
                 {/* REMOVE */}
                 <button
                     className='mt-2 link link-primary link-hover text-sm'
