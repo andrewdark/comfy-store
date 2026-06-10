@@ -1,28 +1,32 @@
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { clearCart } from '../features/cart/cartSlice';
+import { useSelector } from 'react-redux';
+import { SectionTitle, CartItemsList, CartTotals } from '../components'
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
-    const dispatch = useDispatch();
+
     const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
     if (numItemsInCart === 0) {
         return <h1 className='text-3xl'>Your cart is empty</h1>;
     }
 
-
-    const clearTheCart = () => {
-        dispatch(clearCart())
-    };
-
     return (
-        <div>
-            <h1 className='text-3xl'>Cart has {numItemsInCart} items</h1>
-            <button className='btn btn-info border-2'
-                onClick={clearTheCart}
-            >Clear the cart</button>
-        </div>
+        <>
+            <SectionTitle text='Shopping Cart' />
+            <div className='mt-8 grid gap-8 lg:grid-cols-12'>
+                <div className='lg:col-span-8'>
+                    <CartItemsList />
+                </div>
+                <div className='lg:col-span-4 lg:pl-4'>
+                    <CartTotals />
+
+                    <Link to='/checkout' className='btn btn-primary btn-block mt-8'>
+                        proceed to checkout
+                    </Link>
+                </div>
+            </div>
+        </>
     );
 };
 
