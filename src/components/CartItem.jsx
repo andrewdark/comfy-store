@@ -34,7 +34,7 @@ const CartItem = ({ cartItem }) => {
                 </h4>
                 {/* COLOR */}
                 <p className='mt-4 text-sm capitalize flex items-center gap-x-2'>
-                    color : <span className='text-amber-500'>o</span>
+                    color : <span className='badge badge-sm' style={{ backgroundColor: productColor }}></span>
                 </p>
             </div>
             <div className='sm:ml-12'>
