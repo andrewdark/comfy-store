@@ -8,10 +8,10 @@ const FormRange = ({ label, name, size, price }) => {
 
     return (
         <fieldset className="fieldset ">
-            <legend className="fieldset-legend w-full flex justify-between">
+            <label htmlFor={name} className='label cursor-pointer flex justify-between'>
                 <span className='label-text capitalize'>{label}</span>
                 <span>{formatPrice(selectedPrice)}</span>
-            </legend>
+            </label>
             <input type="range" min={0} max={maxPrice} value={selectedPrice}
                 step={step}
                 onChange={(e) => setSelectedPrice(e.target.value)}

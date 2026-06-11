@@ -2,14 +2,16 @@
 const FormCheckbox = ({ label, name, defaultValue, size }) => {
     return (
         <fieldset className="fieldset grid-cols-1 justify-items-center">
-            <legend className="fieldset-legend text-center capitalize">{label}</legend>
+            <label htmlFor={name} className='label cursor-pointer'>
+                <span className='label-text capitalize'>{label}</span>
+            </label>
             <input
                 type='checkbox'
                 name={name}
                 defaultChecked={defaultValue}
                 className={`checkbox checkbox-primary ${size}`}
             />
-            <p className="label hidden">Optional</p>
+
         </fieldset>
     );
 };

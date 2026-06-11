@@ -2,7 +2,9 @@
 const FormSelect = ({ label, name, list, defaultValue, size }) => {
     return (
         <fieldset className="fieldset">
-            <legend className="fieldset-legend capitalize">{label}</legend>
+            <label htmlFor={name} className='label'>
+                <span className='label-text capitalize'>{label}</span>
+            </label>
             <select defaultValue={defaultValue} name={name}
                 id={name}
                 className={`select select-bordered ${size}`}>
@@ -15,7 +17,6 @@ const FormSelect = ({ label, name, list, defaultValue, size }) => {
                     );
                 })}
             </select>
-            <span className="label hidden">Optional</span>
         </fieldset>
     );
 };
