@@ -13,10 +13,9 @@ export const action = async ({ request }) => {
         return null;
     }
 
-    console.log("reg-data: ", data);
     try {
         const response = await customFetch.post('/auth/local/register', data);
-        toast.success('account created successfully');
+        toast.success('Account created successfully');
         return redirect('/login');
     } catch (error) {
         const errorMessage =
