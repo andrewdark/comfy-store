@@ -13,7 +13,7 @@ const getThemeFromLocalStorage = () => {
 };
 
 const initialState = {
-    user: 'user',
+    user: { username: 'John Doe' },
     theme: getThemeFromLocalStorage(),
 };
 
@@ -25,6 +25,8 @@ const userSlice = createSlice({
             toast.success("Login, " + state.userSlice.name);
         },
         logoutUser: (state) => {
+            state.user = null;
+            localStorage.removeItem('user');
             toast.success('Logged out successfully');
         },
         toggleTheme: (state) => {
