@@ -15,10 +15,12 @@ const queryClient = new QueryClient({
 import { loader as landingLoader } from './pages/Landing';
 import { loader as singleProductLoader } from './pages/SingleProduct';
 import { loader as productsLoader } from './pages/Products';
+import { loader as checkoutLoader } from './pages/Checkout';
 
 // actions
 import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
+import { action as checkoutAction } from './components/CheckoutForm';
 
 import { store } from './store';
 
@@ -49,6 +51,9 @@ const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       {
         path: 'checkout', element: <Checkout />,
+        errorElement: <ErrorElement />,
+        loader: checkoutLoader(store),
+        action: checkoutAction(store)
       },
       {
         path: 'orders', element: <Orders />,
