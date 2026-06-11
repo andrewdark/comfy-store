@@ -22,7 +22,8 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         loginUser: (state, action) => {
-            toast.success("Login, " + state.userSlice.name);
+            state.user = action.payload.user;
+            toast.success("Login, " + state.user.username);
         },
         logoutUser: (state) => {
             state.user = null;
