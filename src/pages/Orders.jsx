@@ -45,13 +45,19 @@ export const loader =
                     error?.response?.data?.error?.message ||
                     'there was an error placing your order';
                 toast.error(errorMessage);
-                const errorStatus = error?.response?.status
+
+                const errorStatus = error?.response?.status;
                 if (errorStatus === 401 || errorStatus === 403) return redirect('/login');
                 return null;
             }
         };
 
 const Orders = () => {
+    const { meta } = useLoaderData();
+    if (meta.pagination.total < 1) {
+        return <SectionTitle text='please make an order' />;
+    }
+
     return (
         <>
             <SectionTitle text='Your Orders' />
