@@ -1,21 +1,50 @@
 import { Form, redirect } from 'react-router-dom';
 import FormInput from './FormInput';
 import SubmitBtn from './SubmitBtn';
+import { formatPrice } from '../utils';
+import { customFetch } from '../http';
 import { toast } from 'react-toastify';
 import { clearCart } from '../features/cart/cartSlice';
 
-export const action = (store) =>
-    async ({ request }) => {
+export const action =
+    (store, queryClient) =>
+        async ({ request }) => {
+            const formData = await request.formData();
+            const { name, address } = Object.fromEntries(formData);
+            const user = store.getState().userState.user;
+            const { cartItems, orderTotal, numItemsInCart } =
+                store.getState().cartState;
 
-        try {
-            store.dispatch(clearCart());
-            toast.success('order placed successfully');
-            return redirect('/orders');
-        } catch (error) {
-            console.log(error);
-        }
-        return null;
-    }
+            const info = {
+                name,
+                address,
+                chargeTotal: orderTotal,
+                orderTotal: formatPrice(orderTotal),
+                cartItems,
+                numItemsInCart,
+            };
+
+            try {
+                const response = await customFetch.post(
+                    '/orders',
+                    { data: info },
+                    { headers: { Authorization: `Bearer ${user.token}`, }, }
+                );
+                queryClient.removeQueries(['orders']);
+                store.dispatch(clearCart());
+                toast.success('order placed successfully');
+                return redirect('/orders');
+            } catch (error) {
+                console.log(error);
+                const errorMessage =
+                    error?.response?.data?.error?.message ||
+                    'there was an error placing your order';
+                toast.error(errorMessage);
+                const errorStatus = error?.response?.status;
+                if (errorStatus === 401 || errorStatus === 403) return redirect('/login');
+                return null;
+            }
+        };
 
 const CheckoutForm = () => {
     return (
@@ -29,5 +58,4 @@ const CheckoutForm = () => {
         </Form>
     );
 };
-
 export default CheckoutForm;
