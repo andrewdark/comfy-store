@@ -1,7 +1,7 @@
 import { redirect, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { customFetch } from '../http';
-import { OrdersList, PaginationContainer, SectionTitle, } from '../components';
+import { OrdersList, ComplexPaginationContainer, SectionTitle, } from '../components';
 
 const ordersQuery = (params, user) => {
     return {
@@ -62,7 +62,7 @@ const Orders = () => {
         <>
             <SectionTitle text='Your Orders' />
             <OrdersList />
-            <PaginationContainer />
+            <ComplexPaginationContainer />
         </>
     );
 };
