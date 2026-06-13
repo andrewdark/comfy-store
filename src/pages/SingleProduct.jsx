@@ -5,7 +5,7 @@ import { formatPrice, generateAmountOptions } from '../utils'
 import { useDispatch } from 'react-redux';
 import { addItem } from '../features/cart/cartSlice';
 
-export const loader = async ({ params }) => {
+export const loader = (queryClient) => async ({ params }) => {
     const { id } = params;
 
 

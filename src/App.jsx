@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { About, Cart, Checkout, Error, HomeLayout, Landing, Login, Orders, Products, Register, SingleProduct } from './pages/index'
 import { ErrorElement } from './components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       {
         path: 'products/:id', element: <SingleProduct />,
         errorElement: <ErrorElement />,
-        loader: singleProductLoader,
+        loader: singleProductLoader(queryClient),
       },
       {
         path: 'cart', element: <Cart />,
@@ -89,7 +90,12 @@ const router = createBrowserRouter([
 
 function App() {
 
-  return <RouterProvider router={router} />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }
 
 export default App
