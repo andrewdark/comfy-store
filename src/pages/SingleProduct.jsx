@@ -5,6 +5,13 @@ import { formatPrice, generateAmountOptions } from '../utils'
 import { useDispatch } from 'react-redux';
 import { addItem } from '../features/cart/cartSlice';
 
+const singleProductQuery = (id) => {
+    return {
+        queryKey: ['singleProduct', id],
+        queryFn: () => customFetch(`/products/${id}`),
+    };
+};
+
 export const loader = (queryClient) => async ({ params }) => {
     const { id } = params;
 
@@ -14,12 +21,12 @@ export const loader = (queryClient) => async ({ params }) => {
     const numericId = Number(id);
 
     if (!id || Number.isNaN(numericId)) {
-        // Викидаємо помилку, яку підхопить ваш errorElement
+        // Викидаємо помилку, яку підхопить наш errorElement
         console.log("Некоректний ID продукту", { status: 400 });
         throw new Response("Некоректний ID продукту", { status: 400 });
     }
 
-    const response = await customFetch.get(`/products/${params.id}`);
+    const response = await queryClient.ensureQueryData(singleProductQuery(numericId));
     return { product: response.data.data };
 }
 
